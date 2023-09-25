@@ -1,9 +1,10 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render
 
 
 # Create your views here.
 def index(request):
+    print(request.GET)
     return HttpResponse('страница приложения women/')
 
 
@@ -17,3 +18,6 @@ def pri_id(request, number_student):
 
 def categories(request, cat):
     return HttpResponse(f'<h1> Ссылка {cat} </h1>')
+
+def pageNotFound(request, exception):
+    return HttpResponseNotFound('<h1> Страница не найдена проверьте адрес!! </h1>')
