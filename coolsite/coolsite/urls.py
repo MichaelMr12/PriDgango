@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from women.views import pageNotFound
+from women.views import pageNotFound, page500, page403
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,3 +26,7 @@ urlpatterns = [
 ]
 
 handler404 = pageNotFound
+
+handler500 = page500
+
+handler403 = page403
