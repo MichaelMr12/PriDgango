@@ -10,6 +10,7 @@ def index(request):
     return HttpResponse('страница приложения women/')
 
 
+
 def about(request):
     return redirect('spisok_pri', '12')
     return HttpResponse('<h1> БГИТУ </h1>')
