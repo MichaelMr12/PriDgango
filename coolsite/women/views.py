@@ -2,13 +2,26 @@ from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 
+menu = ['коротко', 'подробнее', 'главное']
+
+data_db = [{'id': 1, 'title': 'Илон Маск', 'content': 'Биография Маска', 'is_public': True},
+           {'id': 2, 'title': 'Жириновский', 'content': 'Биография Жириновского', 'is_public': True},
+           {'id': 3, 'title': 'Баба яга', 'content': 'Биография бабы яги', 'is_public': False},
+
+           ]
+
 
 # Create your views here.
 def index(request):
-    print(request.GET)
+    data = {'title': "Главная страница",
+            'menu': menu,
+            'float': 3.8,
+            'posts': data_db
 
-    return HttpResponse('страница приложения women/')
-
+            }
+    return render(request, 'women/index.html', context=data)
+    return render(request, 'women/index.html', data)
+    return render(request, 'women/index.html', {'title': "Главная страница"})
 
 
 def about(request):
