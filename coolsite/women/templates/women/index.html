@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body style="background-color:black; color:grey;">
+{% extends 'base.html' %}
+
+{% block content1 %}
+{% include 'women/includes/nav.html' %}
+<br>
+<p><a href="{% url 'about' %}"> На страницу о программе</a></p>
+
+<p><a href="{% url 'spisok_pri' 10 %}"> На страницу к студенту</a></p>
 
 <h1> {{title|upper|truncatechars:6}} </h1>
 <br>
@@ -17,6 +18,7 @@
 <br>
 <hr>
 <br>
+{% include 'women/includes/nav.html' %}
 <ul>
     {% for p in posts %}
     {% if p.is_public %}
@@ -30,7 +32,6 @@
     {% endif %}
     {% endfor %}
 </ul>
-
+{% include 'women/includes/nav.html' %}
 {{integer}}
-</body>
-</html>
+{% endblock %}

@@ -2,7 +2,7 @@ from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse, HttpResponseNotFound
 from django.shortcuts import render, redirect
 
-menu = ['коротко', 'подробнее', 'главное']
+menu = [{'title': 'Главная', 'url_n': 'home'}, {'title': ' О сайте', 'url_n': 'about'}]
 
 data_db = [{'id': 1, 'title': 'Илон Маск', 'content': 'Биография Маска', 'is_public': True},
            {'id': 2, 'title': 'Жириновский', 'content': 'Биография Жириновского', 'is_public': True},
@@ -25,8 +25,14 @@ def index(request):
 
 
 def about(request):
-    return redirect('spisok_pri', '12')
+    # return redirect('spisok_pri', '12')
+    return render(request, 'women/about.html',  {'title': "О программе",'menu': menu} )
     return HttpResponse('<h1> БГИТУ </h1>')
+
+def cub(request):
+
+    return render(request, 'women/3D_kub.html')
+
 
 
 def pri_id(request, number_student):
