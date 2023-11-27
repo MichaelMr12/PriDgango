@@ -1,6 +1,8 @@
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse, HttpResponseNotFound
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
+
+from women.models import Students
 
 menu = [{'title': 'Главная', 'url_n': 'home'}, {'title': ' О сайте', 'url_n': 'about'}]
 
@@ -24,15 +26,24 @@ def index(request):
     return render(request, 'women/index.html', {'title': "Главная страница"})
 
 
+def student(request, student_slug):
+    post = get_object_or_404(Students, slug=student_slug)
+
+    data = {'title': "Cтудент группы При",
+            'menu': menu,
+            'post': post,
+            }
+    return render(request, 'women/student.html', context=data)
+
+
 def about(request):
     # return redirect('spisok_pri', '12')
-    return render(request, 'women/about.html',  {'title': "О программе",'menu': menu} )
+    return render(request, 'women/about.html', {'title': "О программе", 'menu': menu})
     return HttpResponse('<h1> БГИТУ </h1>')
 
+
 def cub(request):
-
     return render(request, 'women/3D_kub.html')
-
 
 
 def pri_id(request, number_student):

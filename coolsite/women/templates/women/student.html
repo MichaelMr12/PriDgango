@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content1 %}
+
+{{menu}}
+
+<h1> {{post.title}}</h1>
+<p>
+    {{post.content}}
+</p>
+
+{% include 'women/includes/nav.html' %}
+
+{% endblock %}
